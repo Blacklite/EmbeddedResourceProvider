@@ -70,17 +70,17 @@
     <Compile Include="Tasks\BuildResourceMetadataTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ResourceProvider.Core\ResourceProvider.Core.csproj">
-      <Project>{32CF199E-4446-492E-9061-665055033781}</Project>
+      <Project>{32cf199e-4446-492e-9061-665055033781}</Project>
       <Name>ResourceProvider.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EmbeddedResourceProvider.Test.Example\ResourceProvider.Test.Example.csproj">
+    <ProjectReference Include="..\ResourceProvider.Test.Example\ResourceProvider.Test.Example.csproj">
       <Project>{c2714ab8-db72-4e3e-9b2a-12dd0b2a469d}</Project>
       <Name>ResourceProvider.Test.Example</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

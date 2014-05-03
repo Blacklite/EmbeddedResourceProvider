@@ -47,6 +47,12 @@
     <Compile Include="FileSystem\EmbeddedFile.cs" />
     <Compile Include="ResourceProviderVirtualPathProvider.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ResourceProvider.Core\ResourceProvider.Core.csproj">
+      <Project>{32cf199e-4446-492e-9061-665055033781}</Project>
+      <Name>ResourceProvider.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
