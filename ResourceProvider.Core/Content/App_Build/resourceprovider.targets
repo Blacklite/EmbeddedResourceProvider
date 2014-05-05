@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask AssemblyFile="..\lib\net45\ResourceProvider.Core.dll" TaskName="RP.Core.Tasks.BuildResourceMetadata" />
+  <!--
+  ResourceProviderKeys and ResourceProviderValues build a map between the embedded file path,
+  and the path that you would like virtually exposed.
+  
+  Perhaps you're building a JS library of some sort, and want all your code isolated it it's own assembly
+  with a grunt, gulp or some other build system.  Then you want this code to be used by the Asp.NET Mvc application
+  you could create a key / value map like the following
+  
+  /dist/ -> /Scripts/dist/
+  /src/  -> /Scripts/
+  /lib/  -> /Scripts/lib/
+  
+  -->
+  <!--
+  <PropertyGroup>
+    <ResourceProviderKeys></ResourceProviderKeys>
+    <ResourceProviderValues></ResourceProviderValues>
+  </PropertyGroup>
+  -->
+</Project>

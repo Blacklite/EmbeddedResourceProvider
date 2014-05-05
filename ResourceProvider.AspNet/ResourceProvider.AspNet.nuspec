@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>1.0.0.0</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://blacklite.mit-license.org/</licenseUrl>
+    <projectUrl>https://github.com/Blacklite/EmbeddedResourceProvider</projectUrl>
+    <!--<iconUrl></iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>
+      First release offers support for embedded resources in the file system, as well as mapping of those files to alternate virtual paths.
+    </releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <developmentDependency>true</developmentDependency>
+    <tags>embeddedresource resources embedded</tags>
+    <dependencies>
+      <dependency id="WebActivatorEx" version="2.0.3" />
+      <dependency id="ResourceProvider.Core" version="1.0" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Web" targetFramework=".NETFramework4.0" />
+      <frameworkAssembly assemblyName="System.Web.Mvc" targetFramework=".NETFramework4.0" />
+      <frameworkAssembly assemblyName="System.Web.WebPages" targetFramework=".NETFramework4.0" />
+    </frameworkAssemblies>
+    <references>
+      <reference file="ResourceProvider.AspNet.dll" />
+    </references>
+  </metadata>
+  <files>
+    <file src="content\**\*.*" target="content" />
+  </files>
+</package>

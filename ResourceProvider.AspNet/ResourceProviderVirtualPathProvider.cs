@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Globalization;
@@ -29,7 +30,7 @@ namespace RP.AspNet
         public ResourceProviderVirtualPathProvider()
             : this(new ResourceProvider(AppDomain.CurrentDomain.GetAssemblies()))
         {
-            
+
         }
 
         /// <summary>
@@ -71,9 +72,8 @@ namespace RP.AspNet
                 var file = this._resourceProvider.GetResourceFile(virtualPath);
                 if (HttpContext.Current != null && HttpContext.Current.IsDebuggingEnabled)
                 {
-                    var filePath = this.GetPhysicalFilePath(embeddedPath, file.ProjectPath);
-                    var fileExistsOnDisk = File.Exists(filePath);
-                    if (fileExistsOnDisk)
+                    var filePath = this.FileExists(embeddedPath, file.ProjectPath);
+                    if (filePath != null)
                     {
                         return new PhysicalFile(virtualPath, new FileInfo(filePath));
                     }
@@ -88,7 +88,9 @@ namespace RP.AspNet
         private static object _syncLock = new object();
         private static string hostMapPath = null;
 
-        private string GetPhysicalFilePath(string virtualPath, string relativeDirectoryPath)
+        private static new ConcurrentDictionary<string, string> _fileExistsCache = new ConcurrentDictionary<string, string>();
+
+        private string FileExists(string virtualPath, string relativeDirectoryPath)
         {
             if (hostMapPath == null)
             {
@@ -98,9 +100,30 @@ namespace RP.AspNet
                 }
             }
 
-            var newVirtualPath = virtualPath.TrimStart('~');
-            var result = Path.GetFullPath(hostMapPath + relativeDirectoryPath + newVirtualPath);
-            return result;
+            return _fileExistsCache.GetOrAdd(
+                virtualPath, x =>
+                {
+                    string result = null;
+                    var path = relativeDirectoryPath;
+                    var partialPath = String.Empty;
+                    var newVirtualPath = virtualPath.TrimStart('~');
+
+                    while (path.IndexOf('\\') > -1)
+                    {
+                        var indexOf = path.LastIndexOf('\\');
+                        partialPath = @"..\" + partialPath + @"\" + path.Substring(indexOf + 1);
+                        path = path.Substring(0, indexOf + 1);
+
+                        var temp = Path.GetFullPath(hostMapPath + path + newVirtualPath);
+                        if (File.Exists(temp))
+                        {
+                            result = temp;
+                            break;
+                        }
+                    }
+
+                    return result;
+                });
         }
 
         /// <summary>

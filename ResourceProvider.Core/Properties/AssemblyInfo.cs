@@ -5,14 +5,14 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EmbeddedResourceProvider.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyCompany("David Driscoll")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EmbeddedResourceProvider.Core")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: AssemblyTitle("ResourceProvider.Core")]
+[assembly: AssemblyProduct("ResourceProvider.Core")]
+[assembly: AssemblyDescription("Allows embedded resources to be served from the assembly as if they existed on disk")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

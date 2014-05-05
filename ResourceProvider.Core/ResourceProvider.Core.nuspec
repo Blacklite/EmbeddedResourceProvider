@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>1.0.0.0</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://blacklite.mit-license.org/</licenseUrl>
+    <projectUrl>https://github.com/Blacklite/EmbeddedResourceProvider</projectUrl>
+    <!--<iconUrl></iconUrl>-->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>
+      First release offers support for embedded resources in the file system.
+    </releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <developmentDependency>true</developmentDependency>
+    <tags>embeddedresource resources embedded</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="6.0.3" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Web" />
+      <frameworkAssembly assemblyName="System.Web.Mvc" />
+      <frameworkAssembly assemblyName="System.Web.WebPages" />
+    </frameworkAssemblies>
+    <references>
+      <reference file="ResourceProvider.Core.dll" />
+    </references>
+  </metadata>
+  <files>
+    <file src="content\**\*.*" target="content" />
+    <file src="build\**\*.targets" target="build" />
+    <file src="build\**\*.props" target="build" />
+  </files>
+</package>
