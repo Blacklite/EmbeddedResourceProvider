@@ -156,3 +156,9 @@ $RECYCLE.BIN/
 .DS_Store
 /packages
 /ResourceProvider.Test.Example/rpmetadata.json
+/ResourceProvider.AspNet/rpmetadata.json
+/ResourceProvider.Core/rpmetadata.json
+/ResourceProvider.AspNet/ResourceProvider.AspNet.1.0.0.0.nupkg
+/ResourceProvider.Test.Example
+/ResourceProvider.Test.Example/ResourceProvider.Test.Example.1.0.0.0.nupkg
+/api.key
